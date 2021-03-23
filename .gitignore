@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Data Files
-data/*
+project_data/*
