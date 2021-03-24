@@ -130,3 +130,6 @@ dmypy.json
 
 # Data Files
 project_data/*
+
+#Extra notebooks
+extra_notebooks/*
