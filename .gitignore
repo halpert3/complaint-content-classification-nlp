@@ -129,7 +129,8 @@ dmypy.json
 .pyre/
 
 # Data Files
-project_data/*
+project_data/500maa.csv
+project_data/complaints_1.csv
 
 #Extra notebooks
 extra_notebooks/*
