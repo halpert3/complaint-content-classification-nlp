@@ -2,34 +2,52 @@ import numpy as np
 import pandas as pd 
 import matplotlib
 import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, precision_score, f1_score, recall_score, accuracy_score, plot_confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, precision_score, f1_score, recall_score, accuracy_score, plot_confusion_matrix
 
-
-def scoring(y_pred_from_X_data, y_true_data, model, X_data):
+def scoring(y_test, y_pred, model, X_data): # change y_test to y_real
     # Calculates and prints scores for the model
-    accuracy = accuracy_score(y_true_data, y_pred_from_X_data)
-    precision = precision_score(y_true_data, y_pred_from_X_data, zero_division=0)
-    recall = recall_score(y_true_data, y_pred_from_X_data, zero_division=0)
-    f1 = f1_score(y_true_data, y_pred_from_X_data)
-    conf = confusion_matrix(y_true_data, y_pred_from_X_data)
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred, average='macro')
+    recall = recall_score(y_test, y_pred, average='macro')
+    f1 = f1_score(y_test, y_pred, average='macro')
 
     print("Accuracy: {:.1%}".format(accuracy))
     print("Precision: {:.1%}".format(precision))
     print("Recall: {:.1%}".format(recall))
     print("F1: {:.1%}".format(f1))
-    print("Conufusion Matrix: ")
-    print(conf)
+
     print('\n')
+    print("Classification Report")
+    print('\n')
+    print(classification_report(y_test, y_pred))
+    # Plots a confusion matrix graphic (defined below)
+    plot = plot_c_matrix(model, X_data, y_test)
+
+# def scoring(y_test, y_pred, model, X_data):
+#     # Calculates and prints scores for the model
+#     accuracy = accuracy_score(y_test, y_pred)
+#     precision = precision_score(y_test, y_pred,labels=[0 ,1,2,3,4])
+#     recall = recall_score(y_test, y_pred, average='macro')
+#     f1 = f1_score(y_test, y_pred)
+# #     conf = confusion_matrix(y_test, y_pred)
+
+#     print("Accuracy: {:.1%}".format(accuracy))
+#     print("Precision: {:.1%}".format(precision))
+#     print("Recall: {:.1%}".format(recall))
+#     print("F1: {:.1%}".format(f1))
+# #     print("Conufusion Matrix: ")
+# #     print(conf)
+#     print('\n')
     
     # Plots a confusion matrix graphic (defined below)
-    plot = plot_c_matrix(model, X_data, y_true_data)
+#     plot = plot_c_matrix(model, X_data, y_true_data)
 
-    
-def plot_c_matrix(model, X_data, y_data):
+
+
+# note that plot_confustion_matrix needs to rerun the model. That's what you pass in the model again. 
+def plot_c_matrix(model, X_test, y_test):
     # Generates a confusion matrix graphic
-    plot_confusion_matrix(model, X_data, y_data,
-                      display_labels=["not serious", "serious"],
-                      values_format=".5g")
+    plot_confusion_matrix(model, X_test, y_test)
     plt.grid(False)
     plt.show()
 
