@@ -3,6 +3,66 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix, precision_score, f1_score, recall_score, accuracy_score, plot_confusion_matrix
+from sklearn.metrics import ConfusionMatrixDisplay as cm
+
+def run_model(model, X_train, y_train, X_test, y_test):
+    model.fit(X_train, y_train)
+    train_y_pred = model.predict(X_train)
+    test_y_pred = model.predict(X_test)
+    score_train_and_test(y_train, train_y_pred, y_test, test_y_pred)
+    disp_conf_matrix(y_train, train_y_pred, y_test, test_y_pred)
+
+
+def score_train_and_test(y_train, train_y_pred, y_test, test_y_pred):
+    # Training Scores
+    
+    training_accuracy = accuracy_score(y_train, train_y_pred)
+    training_precision = precision_score(y_train, train_y_pred, average='macro')
+    training_recall = recall_score(y_train, train_y_pred, average='macro')
+    training_f1 = f1_score(y_train, train_y_pred, average='macro')
+    
+    print("TRAINING - Classification Report")
+    print("Accuracy: {:.1%}".format(training_accuracy))
+    print("Precision: {:.1%}".format(training_precision))
+    print("Recall: {:.1%}".format(training_recall))
+    print("F1: {:.1%}".format(training_f1))
+    print(classification_report(y_train, train_y_pred))
+    
+    # Testing Scores
+
+    testing_accuracy = accuracy_score(y_test, test_y_pred)
+    testing_precision = precision_score(y_test, test_y_pred, average='macro')
+    testing_recall = recall_score(y_test, test_y_pred, average='macro')
+    testing_f1 = f1_score(y_test, test_y_pred, average='macro')
+    print("TESTING - Classification Report")
+    print("Accuracy: {:.1%}".format(testing_accuracy))
+    print("Precision: {:.1%}".format(testing_precision))
+    print("Recall: {:.1%}".format(testing_recall))
+    print("F1: {:.1%}".format(testing_f1))
+    print(classification_report(y_test, test_y_pred))
+    
+
+def disp_conf_matrix(y_train, train_y_pred, y_test, test_y_pred):
+    cm_train = confusion_matrix(y_train, train_y_pred, labels=[0,1,2,3,4])
+    cm_test = confusion_matrix(y_test, test_y_pred, labels=[0,1,2,3,4])
+    disp1 = ConfusionMatrixDisplay(confusion_matrix=cm_train)
+    disp2 = ConfusionMatrixDisplay(confusion_matrix=cm_test)
+    
+    # plotting two side by side
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(15, 5))
+    axes[0].set_title('Training confusion matrix'.upper(), fontsize = 12)
+    axes[1].set_title('Testing confusion matrix'.upper(), fontsize = 12)
+    disp1.plot(ax=axes[0])
+    disp2.plot(ax=axes[1])
+
+
+    
+ ################################################################################################333   
+    
+# def disp_conf_matrix(y_train, test_y_train):
+#     cm = confusion_matrix(y_train, test_y_train, labels=[0,1,2,3,4])
+#     disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+#     disp.plot()
 
 def scoring(y_real, y_pred, model, X_data): # change y_test to y_real
     # Calculates and prints scores for the model
