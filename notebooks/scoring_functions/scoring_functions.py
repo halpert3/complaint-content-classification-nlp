@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix, precision_score, f1_score, recall_score, accuracy_score, plot_confusion_matrix
-from sklearn.metrics import ConfusionMatrixDisplay as cm
+from sklearn.metrics import ConfusionMatrixDisplay
 
 def run_model(model, X_train, y_train, X_test, y_test):
     model.fit(X_train, y_train)
@@ -14,8 +14,8 @@ def run_model(model, X_train, y_train, X_test, y_test):
 
 
 def score_train_and_test(y_train, train_y_pred, y_test, test_y_pred):
+
     # Training Scores
-    
     training_accuracy = accuracy_score(y_train, train_y_pred)
     training_precision = precision_score(y_train, train_y_pred, average='macro')
     training_recall = recall_score(y_train, train_y_pred, average='macro')
@@ -29,11 +29,11 @@ def score_train_and_test(y_train, train_y_pred, y_test, test_y_pred):
     print(classification_report(y_train, train_y_pred))
     
     # Testing Scores
-
     testing_accuracy = accuracy_score(y_test, test_y_pred)
     testing_precision = precision_score(y_test, test_y_pred, average='macro')
     testing_recall = recall_score(y_test, test_y_pred, average='macro')
     testing_f1 = f1_score(y_test, test_y_pred, average='macro')
+    
     print("TESTING - Classification Report")
     print("Accuracy: {:.1%}".format(testing_accuracy))
     print("Precision: {:.1%}".format(testing_precision))
@@ -56,7 +56,7 @@ def disp_conf_matrix(y_train, train_y_pred, y_test, test_y_pred):
     disp2.plot(ax=axes[1])
 
 
-    
+ # Functions from earlier project   
  ################################################################################################333   
     
 # def disp_conf_matrix(y_train, test_y_train):
