@@ -36,7 +36,7 @@ def download_and_process_api_data(date, size):
         narr = make_lemma_and_concat(processed_narr)
         df['narrative'].loc[i] = narr
 
-    # Conolidate products into 5 categories
+    # Consolidate products into 5 categories
     df['product'].replace({'Credit reporting, credit repair services, or other personal consumer reports': 'credit_reporting',
                        'Debt collection': 'debt_collection',
                        'Credit card or prepaid card': 'credit_card',
