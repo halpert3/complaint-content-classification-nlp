@@ -55,15 +55,6 @@ def disp_conf_matrix(y_train, train_y_pred, y_test, test_y_pred):
     disp1.plot(ax=axes[0])
     disp2.plot(ax=axes[1])
 
-
- # Functions from earlier project   
- ################################################################################################333   
-    
-# def disp_conf_matrix(y_train, test_y_train):
-#     cm = confusion_matrix(y_train, test_y_train, labels=[0,1,2,3,4])
-#     disp = ConfusionMatrixDisplay(confusion_matrix=cm)
-#     disp.plot()
-
 def scoring(y_real, y_pred, model, X_data): # change y_test to y_real
     # Calculates and prints scores for the model
     accuracy = accuracy_score(y_real, y_pred)
@@ -84,6 +75,7 @@ def scoring(y_real, y_pred, model, X_data): # change y_test to y_real
     plot = plot_c_matrix(model, X_data, y_real)
 
 
+#### Functions from earlier project #### 
 
 # note that plot_confustion_matrix needs to rerun the model. That's what you pass in the model again. 
 def plot_c_matrix(model, X_test, y_real):
