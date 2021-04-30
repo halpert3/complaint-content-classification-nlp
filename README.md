@@ -20,7 +20,7 @@ Each submission was tagged with one of nine financial product classes. Because o
 
 After data cleaning, the dataset consisted of around 162,400 consumer submissions containing narratives. The dataset was still imbalanced, with 56% in the credit reporting class, and the remainder roughly equally distributed (between 8% and 14%) among the remaining classes.
 
-![class_imbalances](C:\Users\halpe\OneDrive\flatiron-ds-course\module5\flatiron-capstone-project\notebooks\exported_images\class_imbalances.png) 
+![class_imbalances](https://github.com/halpert3/flatiron-capstone-project/blob/main/notebooks/exported_images/class_imbalances.png) 
 
 # Process
 
@@ -32,7 +32,7 @@ After data cleaning, the dataset consisted of around 162,400 consumer submission
 
 For example, "card" was the top word in the credit-card class, appearing in 67.6% of associated narratives. That word, however, appeared only in 1.7% of mortgages-and-loan narratives. I assumed word-frequency imbalances like this one would be useful for the model to categorize the narratives. 
 
-<img src="C:\Users\halpe\OneDrive\flatiron-ds-course\module5\flatiron-capstone-project\notebooks\exported_images\credit card pie.png" alt="credit card pie" style="zoom: 80%;" />
+![Credit Card Pie](https://github.com/halpert3/flatiron-capstone-project/blob/main/notebooks/exported_images/credit%20card%20pie.png)
 
 ## Data Preparation
 
