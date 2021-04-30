@@ -82,7 +82,7 @@ Even though I considered Multinomial NB to be my "winning" model, I used the not
 
 This chart shows the ten most important features (words) for classifying texts and how prevalent they were in each class.
 
-![Importance by Class](C:\Users\halpe\OneDrive\flatiron-ds-course\module5\flatiron-capstone-project\notebooks\exported_images\Importance by Class.png)
+![Importance by Class](https://github.com/halpert3/flatiron-capstone-project/blob/main/notebooks/exported_images/Importance%20by%20Class.png)
 
 Clearly, some features were far more prevalent in particular classes such as "card" in credit cards, "Experian" in credit reporting , and "bank" in retail banking. Other words such as "account" and "credit" had more mixed frequencies across the classes, and I assume the model used these features in conjunction with other features to classify narratives. 
 
